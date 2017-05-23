@@ -2,10 +2,12 @@
 An example ViewModel &amp; UI to control a Pan/Tilt behavior of homemade servo brackets. Utilizes a MVVM code pattern with Prism.
 
 The UI:
-[[https://github.com/au42/PanTiltServoDemo/blob/master/docs/img/UIDemo.gif|alt=UIDemo]]
+
+![UI Demo](https://github.com/au42/PanTiltServoDemo/blob/master/docs/img/UIDemo.gif)
 
 A Pan/Tilt Servo Bracket being controlled by this app:
-[[https://github.com/au42/PanTiltServoDemo/blob/master/docs/img/CameraDemo.GIF|alt=CameraDemo]]
+
+![CameraDemo](https://github.com/au42/PanTiltServoDemo/blob/master/docs/img/CameraDemo.GIF)
 
 ## Project Summary
 The initial release of the ServoDemo files contians three projects:
