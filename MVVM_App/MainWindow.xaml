@@ -1,0 +1,134 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:pt="clr-namespace:PanTiltServoMVVM;assembly=PanTiltServoVM" 
+        x:Class="ViPIR_MVVM_App.MainWindow"
+        mc:Ignorable="d"
+        Title="PositionDemo" SizeToContent="WidthAndHeight"
+        ResizeMode="NoResize">
+    
+    <!-- TODO: Add controls for Max/Min values, polling toggle, and other property controls -->
+
+    <Window.DataContext>
+        <pt:PanTiltServoVM />
+    </Window.DataContext>
+
+
+    <Grid x:Name="RootGridCtrl" Margin="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        
+
+        <Canvas Width="200" Height="200" 
+                Grid.Row="1" Grid.Column="1" 
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                x:Name="ClickGridCtrl"
+                MouseUp="Grid_MouseUp"  MouseMove="Grid_MouseMove"
+                >
+
+            <Canvas.Background>
+                <DrawingBrush TileMode="Tile" Viewport="0,0,20,20" ViewportUnits="Absolute">
+                    <DrawingBrush.Drawing>
+                        <GeometryDrawing>
+                            <GeometryDrawing.Geometry>
+                                <RectangleGeometry Rect="0,0,50,50"/>
+                            </GeometryDrawing.Geometry>
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="Gray" Thickness="1"/>
+                            </GeometryDrawing.Pen>
+                        </GeometryDrawing>
+                    </DrawingBrush.Drawing>
+                </DrawingBrush>
+            </Canvas.Background>
+
+            <Ellipse Grid.Row="1" Grid.Column="1" 
+                     x:Name="PosCircleCtrl" 
+                     Fill="Transparent"
+                     Height="10" Width="10" 
+                     Stroke="Gray" 
+                     Visibility="Hidden"/>
+
+            <Ellipse Grid.Row="1" Grid.Column="1" 
+                     x:Name="ActualCircleCtrl" 
+                     Fill="Transparent" 
+                     Height="4" Width="4" 
+                     Stroke="DarkRed" 
+                     Visibility="Hidden"/>
+
+            <StackPanel x:Name="PointLabelCtrl" Visibility="Hidden">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
+                    <Label Content="{Binding PanPercentGoal, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right"/>
+                    <Label Content="%" HorizontalAlignment="Left"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                    <Label Content="{Binding TiltPercentGoal, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right"/>
+                    <Label Content="%" HorizontalAlignment="Left"/>
+                </StackPanel>
+            </StackPanel>
+
+        </Canvas>
+
+        <Expander Grid.Column="1" Grid.Row="2" Header="Position" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Grid Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Label Content="Pan:"  Grid.Column="0" Grid.Row="1" VerticalAlignment="Center"/>
+                <Label Content="{Binding PanPercentGoal, UpdateSourceTrigger=PropertyChanged}"  MinWidth="50" Grid.Column="1" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Label Content="{Binding PanPercentActual, UpdateSourceTrigger=PropertyChanged}"  MinWidth="50" Grid.Column="2" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+                <Label Content="Tilt:"  Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" />
+                <Label Content="{Binding TiltPercentGoal, UpdateSourceTrigger=PropertyChanged}"  MinWidth="50" Grid.Column="1" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Label Content="{Binding TiltPercentActual, UpdateSourceTrigger=PropertyChanged}"  MinWidth="50" Grid.Column="2" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+                <Label Content="Goal:" Grid.Column="1" Grid.Row="0" />
+                <Label Content="Actual:" Grid.Column="2" Grid.Row="0" />
+            </Grid>
+        </Expander>
+
+        <Expander Grid.Row="3" Grid.Column="1" Header="Settings" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Grid  Margin="5" HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Label Content="Pan:"  Grid.Column="0" Grid.Row="1"/>
+                <TextBox Text="{Binding PanSpeed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  MinWidth="50" Grid.Column="1" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="2"/>
+                <TextBox Text="{Binding PanAccel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  MinWidth="50" Grid.Column="2" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="2"/>
+
+                <Label Content="Tilt:"  Grid.Column="0" Grid.Row="2"/>
+                <TextBox Text="{Binding TiltSpeed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinWidth="50" Grid.Column="1" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="2"/>
+                <TextBox Text="{Binding TiltAccel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinWidth="50" Grid.Column="2" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="2"/>
+
+                <Label Content="Speed:" Grid.Column="1" Grid.Row="0" />
+                <Label Content="Accel:" Grid.Column="2" Grid.Row="0" />
+            </Grid>
+        </Expander>
+    </Grid>
+</Window>

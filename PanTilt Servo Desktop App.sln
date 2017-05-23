@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PanTiltServoVM", "Movement\PanTiltServoVM.csproj", "{BF982A0E-1016-4AAB-8398-FDB14C5FE850}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovementTest", "MovementTest\MovementTest.csproj", "{4C3F479B-EC4C-4B79-954D-625BC711E3DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFApp", "MVVM_App\WPFApp.csproj", "{39EF73BE-010F-4080-BCDF-B3D56F2900DC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BF982A0E-1016-4AAB-8398-FDB14C5FE850}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF982A0E-1016-4AAB-8398-FDB14C5FE850}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF982A0E-1016-4AAB-8398-FDB14C5FE850}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF982A0E-1016-4AAB-8398-FDB14C5FE850}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C3F479B-EC4C-4B79-954D-625BC711E3DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C3F479B-EC4C-4B79-954D-625BC711E3DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C3F479B-EC4C-4B79-954D-625BC711E3DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C3F479B-EC4C-4B79-954D-625BC711E3DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39EF73BE-010F-4080-BCDF-B3D56F2900DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39EF73BE-010F-4080-BCDF-B3D56F2900DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39EF73BE-010F-4080-BCDF-B3D56F2900DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39EF73BE-010F-4080-BCDF-B3D56F2900DC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
